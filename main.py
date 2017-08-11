@@ -22,7 +22,9 @@ valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat']
 
 # Function to parse user inputs
 def input_parser(user_input):
+    # split user_input to separate command and argument
     user_input_split = user_input.split(' ')
+
     if user_input_split[0] in valid_commands:
         print 'user entered valid command \n'
         print 'user just entered this:  ' + user_input
@@ -48,6 +50,9 @@ def input_parser(user_input):
         print 'user entered invalid command'
 
 # various functions for every command
+
+# main function that works
+# cd [subreddit]
 def cd_command(subReddit):
     print 'cd command \n'
     print 'displaying top subs'
@@ -75,6 +80,8 @@ def print_line():
 #####   LOGIC FOR API   ##########################
 
 ##################################################
+
+# returns top subs with title and score
 
 def main_api_logic(subReddit):
     # create an instance of reddit and subreddit using praw
