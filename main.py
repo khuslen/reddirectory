@@ -15,8 +15,6 @@ import userInput
 programRunning = True
 ##################################################
 
-# Constant loop to keep the program running
-
 def getUserInput():
     user_input = raw_input(socket.gethostname() + '@' + socket.gethostname() + ':~$ ')
     return user_input

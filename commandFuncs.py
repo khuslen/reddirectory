@@ -1,15 +1,13 @@
 import redditGet
 
 # various functions for every command
-# <<<<<<< HEAD
 # currentSubReddit = 'brisbane'
 nextNum = 0
 itemsArr = []
+currentSubmission = 'something'
 
-# =======
 global currentSubReddit
 global current_subreddit_sort
-# >>>>>>> post-pagination
 # main function that works
 # cd [subreddit]
 
@@ -17,12 +15,10 @@ default_sort = 'hot'
 valid_sorts = ['hot', 'new', 'rising', 'controversial', 'top']
 
 def cd_command(subReddit):
-# <<<<<<< HEAD
     # print 'In ' + subReddit[1] + ' subreddit'
     
     resetState(subReddit)    
     
-# =======
     global currentSubReddit
     global current_subreddit_sort
 
@@ -45,7 +41,6 @@ def cd_command(subReddit):
     # Tell the user where they are
     # print 'In ' + currentSubReddit + ' viewing ' + current_subreddit_sort + ' subs'
  
-# >>>>>>> post-pagination
 def cd_dot_command():
     print 'cd . command'
 
@@ -55,7 +50,6 @@ def cd_dot_dot_command():
 def ls_command():
     global currentSubReddit
     print 'ls command'
-# <<<<<<< HEAD
     print 'submissions'
     print currentSubReddit
     redditGet.main_api_logic(currentSubReddit, current_subreddit_sort, 0)
@@ -79,6 +73,3 @@ def resetState(subReddit):
     currentSubReddit = subReddit
     nextNum = 0
     itemsArr = []
-
-def command_builder():
-    print 'in command builder'

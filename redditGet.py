@@ -72,7 +72,6 @@ def readPost(itemNum):
     #     print(str(counter) + '. '+ top_level_comment.body)
     #     counter += 1
     # Add code here that displays the main post and its comments
-# <<<<<<< HEAD
 
     # TO-DO: Display the contents of itemsArr[itemNum]
 
@@ -88,8 +87,6 @@ def readComments(itemNum):
         # Add code here that displays the main post and its comments
 
         # TO-DO: Display the contents of itemsArr[itemNum]
-# =======
     print('Reading post number', itemNum)
     
     # TO-DO: Display the contents of itemsArr[itemNum]
-# >>>>>>> post-pagination
