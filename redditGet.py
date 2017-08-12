@@ -23,15 +23,26 @@ reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
                      client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
                      user_agent='inter_webz')
 
-def main_api_logic(subReddit):
+def main_api_logic(subReddit, subreddit_sort):
     # Stores the listed items in an array so we can access them with a number
     global itemsArr
     
 
     subreddit = reddit.subreddit(subReddit)
-    
+
+    """
+    mystring = "fullName (name = 'Joe', family = 'Brand')"
+    result = eval(mystring)
+
+    """
+
+    all_submissions_pre = "subreddit." + subreddit_sort + "(limit=10)"
+    all_submissions = eval(all_submissions_pre)
+
     itemNum = 1
-    for submission in subreddit.top(limit=10):
+
+    # for submission in subreddit.top(limit=10):
+    for submission in all_submissions:
         commandFuncs.print_line()
         
         itemsArr.append(submission)
