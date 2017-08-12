@@ -10,11 +10,12 @@ reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
                      password='password')
 
 
-def createSubReddit(currentSubreddit, title):
-    print 'creating a sub'
-    print currentSubreddit[1]
-    print title
-    title = title
+def createSubReddit(currentSubreddit, title, body):
+    print 'create a sumission in ' + currentSubreddit[1]
+    print 'Title' + title
+    print 'Body'  + body
+    print 'creating a submission ....'
+
     # title = 'Test submission from app'
-    url = 'https://stackoverflow.com/'
-    reddit.subreddit(currentSubreddit[1]).submit(title, url=url)
+    reddit.subreddit(currentSubreddit[1]).submit(title, selftext= body)
+    print 'submission successfull'

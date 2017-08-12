@@ -18,7 +18,6 @@ def input_parser(user_input):
         print 'user entered valid command \n'
         print 'user just entered this:  ' + user_input
         # user_input_split = user_input.split(' ')
-
         if (top_level_command == 'cd'):
             commandFuncs.cd_command(user_input_split)
 
@@ -32,8 +31,10 @@ def input_parser(user_input):
             commandFuncs.next_command()
 
         elif (top_level_command == 'mkdir'):
-            commandFuncs.mkdir_command(user_input_split[1])
-
-
+            info = user_input.split('-t')
+            titleAndBody= info[1].split('-u')
+            title = titleAndBody[0].replace("'", '')
+            body = titleAndBody[1].replace("'", '')
+            commandFuncs.mkdir_command(title, body)
     else:
         print 'user entered invalid command'

@@ -75,8 +75,8 @@ def next_command():
     nextNum += 10
     redditGet.main_api_logic(currentSubReddit, current_subreddit_sort, nextNum)
 
-def mkdir_command(title):
-    redditPost.createSubReddit(currentSubReddit, title)
+def mkdir_command(title, body):
+    redditPost.createSubReddit(currentSubReddit, title, body)
 
 
 def resetState(subReddit):
