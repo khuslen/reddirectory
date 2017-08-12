@@ -4,6 +4,7 @@ import redditGet
 global currentSubReddit
 # main function that works
 # cd [subreddit]
+
 def cd_command(subReddit):
     global currentSubReddit
 
