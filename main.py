@@ -15,12 +15,9 @@ import userInput
 programRunning = True
 ##################################################
 
-def getUserInput():
-    user_input = raw_input(socket.gethostname() + '@' + socket.gethostname() + ':~$ ')
-    return user_input
-
 while (programRunning == True):
-    user_input = raw_input(socket.gethostname() + '@' + socket.gethostname() + ':~$ ')
+    current_prompt = commandFuncs.get_state_string()
+    user_input = raw_input(socket.gethostname() + '@' + current_prompt + ':~$ ')
 
     if user_input != 'exit':
         userInput.input_parser(user_input)
