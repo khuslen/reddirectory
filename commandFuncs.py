@@ -13,12 +13,6 @@ def cd_command(subReddit):
     global currentSubReddit
     global current_subreddit_sort
 
-
-    # print 'In ' + subReddit + ' subreddit'
-    print 'Displaying top subs'
-    
-    currentSubReddit = subReddit[1]
-
     if len(subReddit) > 2:
 
         new_sort = subReddit[2]
@@ -34,6 +28,9 @@ def cd_command(subReddit):
 
     else:
         current_subreddit_sort = default_sort
+
+    # Tell the user where they are
+    print 'In ' + currentSubReddit + ' viewing ' + current_subreddit_sort + ' subs'
  
 def cd_dot_command():
     print 'cd . command'
