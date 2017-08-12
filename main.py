@@ -6,18 +6,20 @@ import httplib
 import time
 import praw
 
+# Custom files
+import commandFuncs
+import redditGet
 
 # bool to keep the program running
 programRunning = True
-
-# list of valid commands
-valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat']
 
 ##################################################
 
 #####   NEED TO REFRACTOR FUNCTION IN FILES ######
 
 ##################################################
+# list of valid commands
+valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat']
 
 # Function to parse user inputs
 def input_parser(user_input):
@@ -32,79 +34,24 @@ def input_parser(user_input):
 
         if (user_input_split[0] == 'cd'):
             if (user_input_split[1] == '.'):
-                cd_dot_command()
+                commandFuncs.cd_dot_command()
             elif (user_input_split[1] == '..'):
-                cd_dot_dot_command()
+                commandFuncs.cd_dot_dot_command()
             elif (user_input_split[1].isdigit()):
-                readPost(user_input_split[1]) # read that post number
+                redditGet.readPost(user_input_split[1]) # read that post number
             else:
-                cd_command(user_input_split[1])
+                commandFuncs.cd_command(user_input_split[1])
 
         elif (user_input == 'ls'):
-            ls_command()
+            commandFuncs.ls_command()
 
         elif (user_input == 'cat'):
-            cat_command()
+            commandFuncs.cat_command()
 
     else:
         print 'user entered invalid command'
 
-# various functions for every command
-
-# main function that works
-# cd [subreddit]
-def cd_command(subReddit):
-    print 'cd command \n'
-    print 'displaying top subs'
-    main_api_logic(subReddit)
-
-def cd_dot_command():
-    print 'cd . command'
-
-def cd_dot_dot_command():
-    print 'cd .. command'
-
-def ls_command():
-    print 'ls command'
-
-def cat_command():
-    print 'cat command'
-
-# function to print line
-def print_line():
-    print '--------------------------------------------------------------------------------------------------------\n'
-
-
 ##################################################
-
-#####   LOGIC FOR API   ##########################
-
-##################################################
-
-# returns top subs with title and score
-
-def main_api_logic(subReddit):
-    # create an instance of reddit and subreddit using praw
-    # Zak's credentials lolz
-    reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
-                         client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
-                         user_agent='inter_webz')
-    subreddit = reddit.subreddit(subReddit)
-    
-    itemNum = 1
-    for submission in subreddit.top(limit=10):
-        print_line()
-        
-        print (str(itemNum) + '. Title: ')
-        print(submission.title)  # Submission title
-        print ('Score: ')
-        print (submission.score)  # Submission Score
-        itemNum += 1
-
-def readPost(itemNum):
-    # Add code here that displays the main post and its comments
-    print('Reading post number', itemNum)
-
 # Constant loop to keep the program running
 while (programRunning == True):
     user_input = raw_input(socket.gethostname() + '@' + socket.gethostname() + ':~$ ')
