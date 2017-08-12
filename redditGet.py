@@ -7,7 +7,7 @@ from praw.models import MoreComments
 
 # Custom files
 import commandFuncs
-
+import formatOutput
 
 ##################################################
 
@@ -36,22 +36,14 @@ def main_api_logic(subReddit, subreddit_sort, nextNum):
     if nextNum == 0:
         storeItems(this_subreddit, subreddit_sort)
 
-    itemNum = nextNum + 1
-    # change this from 1 to 10
-    for i in range(nextNum, nextNum + 5):
-        print str(itemNum) + '. ' + commandFuncs.itemsArr[i].title
-        itemNum += 1
+    itemsData = []
+    for item in commandFuncs.itemsArr:
+        itemsData.append(item.title)
 
-    """
-    mystring = "fullName (name = 'Joe', family = 'Brand')"
-    result = eval(mystring)
-
-    """
+    formatOutput.printList(itemsData, nextNum, ["37;40m", "35;40m"])
 
 
 def storeItems(subreddit, subreddit_sort):
-
-
     all_submissions_pre = "subreddit." + subreddit_sort + "(limit=100)"
     all_submissions = eval(all_submissions_pre)
 
@@ -60,34 +52,22 @@ def storeItems(subreddit, subreddit_sort):
         commandFuncs.itemsArr.append(submission)
         subId.append(submission.id)
 
+
 def readPost(itemNum):
-    counter = 1
     print 'reading post'
     print itemNum
     submission = reddit.submission(subId[itemNum -1])
-    print (submission.selftext)
+    formatOutput.printPost(submission)
 
-    # for top_level_comment in submission.comments:
-    #     if isinstance(top_level_comment, MoreComments):
-    #         continue
-    #     print(str(counter) + '. '+ top_level_comment.body)
-    #     counter += 1
-    # Add code here that displays the main post and its comments
-
-    # TO-DO: Display the contents of itemsArr[itemNum]
 
 def readComments(itemNum):
-    counter = 1
+    topComments = []
     print 'read comments'
     submission = reddit.submission(subId[itemNum - 1])
     for top_level_comment in submission.comments:
         if isinstance(top_level_comment, MoreComments):
             continue
-        print(str(counter) + '. ' + top_level_comment.body)
-        counter += 1
-        # Add code here that displays the main post and its comments
-
-        # TO-DO: Display the contents of itemsArr[itemNum]
-    print('Reading post number', itemNum)
+        topComments.append(top_level_comment.body)
     
-    # TO-DO: Display the contents of itemsArr[itemNum]
+    formatOutput.printList(topComments, 0, ["32;40m", "36;40m"])
+    
