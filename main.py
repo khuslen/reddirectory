@@ -38,7 +38,12 @@ def input_parser(user_input):
             elif (user_input_split[1] == '..'):
                 commandFuncs.cd_dot_dot_command()
             elif (user_input_split[1].isdigit()):
-                redditGet.readPost(user_input_split[1]) # read that post number
+                # cast input to int
+                redditGet.readPost(int(user_input_split[1])) # read that post number
+                extra = getUserInput()
+                extra_split = extra.split(' ')
+                if (extra_split[1] == 'comments'):
+                    redditGet.readComments(int(user_input_split[1]))
             else:
                 commandFuncs.cd_command(user_input_split[1])
 
@@ -58,6 +63,10 @@ def input_parser(user_input):
 
 ##################################################
 # Constant loop to keep the program running
-while (programRunning == True):
+
+def getUserInput():
     user_input = raw_input(socket.gethostname() + '@' + socket.gethostname() + ':~$ ')
-    input_parser(user_input)
+    return user_input
+
+while (programRunning == True):
+    input_parser(getUserInput())
