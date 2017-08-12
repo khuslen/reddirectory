@@ -4,6 +4,7 @@ import redditGet
 
 # main function that works
 # cd [subreddit]
+
 def cd_command(subReddit):
     print 'cd command \n'
     print 'displaying top subs'
