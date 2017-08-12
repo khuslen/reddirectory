@@ -13,7 +13,6 @@ programRunning = True
 # list of valid commands
 valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat']
 
-
 ##################################################
 
 #####   NEED TO REFRACTOR FUNCTION IN FILES ######
@@ -32,13 +31,14 @@ def input_parser(user_input):
 
 
         if (user_input_split[0] == 'cd'):
-            cd_command(user_input_split[1])
-
-        elif (user_input == 'cd .'):
-            cd_dot_command()
-
-        elif (user_input == 'cd ..'):
-            cd_dot_dot_command()
+            if (user_input_split[1] == '.'):
+                cd_dot_command()
+            elif (user_input_split[1] == '..'):
+                cd_dot_dot_command()
+            elif (user_input_split[1].isdigit()):
+                readPost(user_input_split[1]) # read that post number
+            else:
+                cd_command(user_input_split[1])
 
         elif (user_input == 'ls'):
             ls_command()
@@ -90,14 +90,20 @@ def main_api_logic(subReddit):
                          client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
                          user_agent='inter_webz')
     subreddit = reddit.subreddit(subReddit)
-
+    
+    itemNum = 1
     for submission in subreddit.top(limit=10):
         print_line()
-        print ('Title: ')
+        
+        print (str(itemNum) + '. Title: ')
         print(submission.title)  # Submission title
         print ('Score: ')
         print (submission.score)  # Submission Score
+        itemNum += 1
 
+def readPost(itemNum):
+    # Add code here that displays the main post and its comments
+    print('Reading post number', itemNum)
 
 # Constant loop to keep the program running
 while (programRunning == True):
