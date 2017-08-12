@@ -26,7 +26,7 @@ def cd_command(user_input_split):
             userSession.currentSession.currentState = 'comment'
         
         elif userSession.currentSession.currentState == 'comment':
-            # TO-DO?
+            # TODO:
             print "hi"
 
     elif userSession.currentSession.currentState == 'attheverystartoftheprogram':
@@ -44,7 +44,7 @@ def cd_dot_command():
     print 'cd . command'
 
 def cd_dot_dot_command():
-    print 'cd .. command'
+    # print 'cd .. command'
     if userSession.currentSession.currentState == 'subreddit':
         userSession.currentSession.currentSubreddit = ""
         userSession.currentSession.currentState = 'attheverystartoftheprogram'
@@ -66,7 +66,7 @@ def ls_command():
     elif userSession.currentSession.currentState == 'submission':
         redditGet.readComments(userSession.currentSession.currentSubmission)
     elif userSession.currentSession.currentState == 'comment':
-        # TO-DO: Display subcomments
+        # TODO: Display subcomments
         print "hi 2"
 
 def printThreads():
@@ -74,6 +74,7 @@ def printThreads():
     print valid_sorts
 
 def cat_command():
+    # TODO: cat
     print 'cat command'
 
 def next_command():

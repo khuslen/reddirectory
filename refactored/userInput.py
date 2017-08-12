@@ -1,7 +1,8 @@
 import commandFuncs
 
 # list of valid commands
-valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat', 'next', 'mkdir', 'help']
+# valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat', 'next', 'mkdir', 'help']
+valid_commands = ['ls', 'cd', 'cat', 'next', 'mkdir', 'help']
 
 # Function to parse user inputs
 def input_parser(user_input):
