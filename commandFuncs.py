@@ -4,6 +4,7 @@ import redditGet
 currentSubReddit = 'brisbane'
 nextNum = 0
 itemsArr = []
+currentSubmission = 'something'
 
 # main function that works
 # cd [subreddit]
@@ -31,6 +32,7 @@ def cat_command():
 # function to print line
 def print_line():
     print '--------------------------------------------------------------------------------------------------------\n'
+
 def next_command():
     global nextNum
     nextNum += 10
@@ -43,3 +45,4 @@ def resetState(subReddit):
     currentSubReddit = subReddit
     nextNum = 0
     itemsArr = []
+   

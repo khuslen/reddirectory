@@ -39,11 +39,10 @@ def input_parser(user_input):
                 commandFuncs.cd_dot_dot_command()
             elif (user_input_split[1].isdigit()):
                 # cast input to int
+                commandFuncs.currentSubmission = int(user_input_split[1])
                 redditGet.readPost(int(user_input_split[1])) # read that post number
-                extra = getUserInput()
-                extra_split = extra.split(' ')
-                if (extra_split[1] == 'comments'):
-                    redditGet.readComments(int(user_input_split[1]))
+            elif (user_input_split[1] == 'comments'):
+                redditGet.readComments(commandFuncs.currentSubmission)
             else:
                 commandFuncs.cd_command(user_input_split[1])
 
