@@ -19,10 +19,11 @@ programRunning = True
 
 ##################################################
 # list of valid commands
-valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat']
+valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat', 'exit']
 
 # Function to parse user inputs
 def input_parser(user_input):
+    global programRunning
     # split user_input to separate command and argument
     user_input_split = user_input.split(' ')
 
@@ -47,6 +48,9 @@ def input_parser(user_input):
 
         elif (user_input == 'cat'):
             commandFuncs.cat_command()
+        
+        elif (user_input == 'exit'):
+            programRunning = False
 
     else:
         print 'user entered invalid command'
