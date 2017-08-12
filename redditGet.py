@@ -71,3 +71,12 @@ def readComments(itemNum):
     
     formatOutput.printList(topComments, 0, ["32;40m", "36;40m"])
     
+def saveSubmissions(subreddit):
+    this_subreddit = reddit.subreddit(subreddit)
+
+    if nextNum == 0:
+        storeItems(this_subreddit, subreddit_sort)
+
+    itemsData = []
+    for item in commandFuncs.itemsArr:
+        itemsData.append(item.title)

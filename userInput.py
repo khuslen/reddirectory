@@ -31,5 +31,8 @@ def input_parser(user_input):
         elif (top_level_command == 'next'):
             commandFuncs.next_command()
 
+        elif (top_level_command == 'apt-get'):
+            commandFuncs.apt_get_command(user_input_split[1])
+
     else:
         print 'user entered invalid command'

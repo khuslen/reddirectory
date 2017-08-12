@@ -81,3 +81,8 @@ def resetState(subReddit):
     currentSubReddit = subReddit
     nextNum = 0
     itemsArr = []
+
+def apt_get_command(subreddit):
+    print "Downloading " + subreddit + " subreddit"
+    redditGet.saveSubmissions(subreddit)
+
