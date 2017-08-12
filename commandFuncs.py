@@ -1,4 +1,5 @@
 import redditGet
+import redditPost
 
 # various functions for every command
 # currentSubReddit = 'brisbane'
@@ -73,6 +74,10 @@ def next_command():
     global nextNum
     nextNum += 10
     redditGet.main_api_logic(currentSubReddit, current_subreddit_sort, nextNum)
+
+def mkdir_command(title):
+    redditPost.createSubReddit(currentSubReddit, title)
+
 
 def resetState(subReddit):
     global currentSubReddit

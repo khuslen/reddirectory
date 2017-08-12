@@ -1,7 +1,7 @@
 import commandFuncs
 
 # list of valid commands
-valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat', 'next']
+valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat', 'next', 'mkdir']
 
 # Function to parse user inputs
 def input_parser(user_input):
@@ -30,6 +30,10 @@ def input_parser(user_input):
 
         elif (top_level_command == 'next'):
             commandFuncs.next_command()
+
+        elif (top_level_command == 'mkdir'):
+            commandFuncs.mkdir_command(user_input_split[1])
+
 
     else:
         print 'user entered invalid command'

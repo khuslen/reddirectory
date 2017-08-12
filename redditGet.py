@@ -37,7 +37,8 @@ def main_api_logic(subReddit, subreddit_sort, nextNum):
         storeItems(this_subreddit, subreddit_sort)
 
     itemNum = nextNum + 1
-    for i in range(nextNum, nextNum + 10):
+    # change this from 1 to 10
+    for i in range(nextNum, nextNum + 1):
         print str(itemNum) + '. ' + commandFuncs.itemsArr[i].title
         itemNum += 1
 # =======
