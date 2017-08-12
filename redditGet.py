@@ -26,22 +26,36 @@ reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
                      client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
                      user_agent='inter_webz')
 
-def main_api_logic(subReddit, nextNum):
+def main_api_logic(subReddit, subreddit_sort, nextNum):
+
     # Stores the listed items in an array so we can access them with a number
     global itemsArr
 
-    subreddit = reddit.subreddit(subReddit)
+    this_subreddit = reddit.subreddit(subReddit[1])
 
     if nextNum == 0:
-        storeItems(subreddit)
+        storeItems(this_subreddit, subreddit_sort)
 
     itemNum = nextNum + 1
     for i in range(nextNum, nextNum + 10):
         print str(itemNum) + '. ' + commandFuncs.itemsArr[i].title
         itemNum += 1
+# =======
+    """
+    mystring = "fullName (name = 'Joe', family = 'Brand')"
+    result = eval(mystring)
 
-def storeItems(subreddit):
-    for submission in subreddit.top(limit=100):
+    """
+
+
+def storeItems(subreddit, subreddit_sort):
+
+
+    all_submissions_pre = "subreddit." + subreddit_sort + "(limit=100)"
+    all_submissions = eval(all_submissions_pre)
+
+    # for submission in subreddit.top(limit=100):
+    for submission in all_submissions:
         commandFuncs.itemsArr.append(submission)
         subId.append(submission.id)
 
@@ -58,6 +72,7 @@ def readPost(itemNum):
     #     print(str(counter) + '. '+ top_level_comment.body)
     #     counter += 1
     # Add code here that displays the main post and its comments
+# <<<<<<< HEAD
 
     # TO-DO: Display the contents of itemsArr[itemNum]
 
@@ -73,3 +88,8 @@ def readComments(itemNum):
         # Add code here that displays the main post and its comments
 
         # TO-DO: Display the contents of itemsArr[itemNum]
+# =======
+    print('Reading post number', itemNum)
+    
+    # TO-DO: Display the contents of itemsArr[itemNum]
+# >>>>>>> post-pagination

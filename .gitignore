@@ -2,3 +2,5 @@
 env/
 .idea/workplace.xml
 .idea/
+*.swp
+.idea/
