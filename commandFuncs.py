@@ -4,7 +4,7 @@ import redditGet
 # currentSubReddit = 'brisbane'
 nextNum = 0
 itemsArr = []
-currentSubmission = 'something'
+# currentSubmission = 'something'
 
 global currentSubReddit
 global current_subreddit_sort
@@ -82,27 +82,26 @@ def resetState(subReddit):
     itemsArr = []
 
 def get_state_string():
+
     global currentSubReddit
     global nextNum
     global itemsArr
-    # currentSubReddit = subReddit
-    # nextNum = 0
-    # itemsArr = []
+    global currentSubmission
 
     new_prompt_arr = []
 
-    # print currentSubReddit
     if 'currentSubReddit' in globals():
         new_prompt_arr.append(currentSubReddit[1])
 
         if 'current_subreddit_sort' in globals():
             new_prompt_arr.append(current_subreddit_sort)
 
+            if 'currentSubmission' in globals():
+                new_prompt_arr.append(str(currentSubmission))
+
     else: 
         new_prompt_arr.append('reddit')
 
-    # print nextNum
-    # print itemsArr
     new_prompt_str = '/'.join(new_prompt_arr)
 
     return new_prompt_str
