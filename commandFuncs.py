@@ -1,5 +1,6 @@
 import redditGet
 import redditPost
+import helpInfo
 
 # various functions for every command
 # currentSubReddit = 'brisbane'
@@ -78,6 +79,8 @@ def next_command():
 def mkdir_command(title, body):
     redditPost.createSubReddit(currentSubReddit, title, body)
 
+def help_command():
+    helpInfo.printHelpInfo()
 
 def resetState(subReddit):
     global currentSubReddit

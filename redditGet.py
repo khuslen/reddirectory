@@ -38,10 +38,10 @@ def main_api_logic(subReddit, subreddit_sort, nextNum):
 
     itemNum = nextNum + 1
     # change this from 1 to 10
-    for i in range(nextNum, nextNum + 1):
+    for i in range(nextNum, nextNum + 5):
         print str(itemNum) + '. ' + commandFuncs.itemsArr[i].title
         itemNum += 1
-# =======
+
     """
     mystring = "fullName (name = 'Joe', family = 'Brand')"
     result = eval(mystring)
