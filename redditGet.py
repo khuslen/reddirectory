@@ -15,17 +15,24 @@ import commandFuncs
 
 # returns top subs with title and score
 
+itemsArr = []
+
 def main_api_logic(subReddit):
+    # Stores the listed items in an array so we can access them with a number
+    global itemsArr
+    
     # create an instance of reddit and subreddit using praw
     # Zak's credentials lolz
     reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
                          client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
                          user_agent='inter_webz')
     subreddit = reddit.subreddit(subReddit)
-
+    
     itemNum = 1
     for submission in subreddit.top(limit=10):
         commandFuncs.print_line()
+        
+        itemsArr.append(submission)
 
         print (str(itemNum) + '. Title: ')
         print(submission.title)  # Submission title
@@ -34,6 +41,9 @@ def main_api_logic(subReddit):
         itemNum += 1
 
 def readPost(itemNum):
+    global itemsArr
+    
     # Add code here that displays the main post and its comments
     print('Reading post number', itemNum)
-
+    
+    # TO-DO: Display the contents of itemsArr[itemNum]
