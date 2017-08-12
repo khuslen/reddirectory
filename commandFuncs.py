@@ -21,6 +21,7 @@ def cd_dot_dot_command():
 
 def ls_command():
     print 'ls command'
+    print 'submissions'
     redditGet.main_api_logic(currentSubReddit)
 
 def cat_command():
