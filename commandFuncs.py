@@ -1,18 +1,18 @@
 import redditGet
 
 # various functions for every command
-global currentSubReddit
+currentSubReddit = 'brisbane'
+nextNum = 0
+itemsArr = []
+
 # main function that works
 # cd [subreddit]
 
 def cd_command(subReddit):
-    global currentSubReddit
-
-    print 'In ' + subReddit + 'subreddit'
-    print 'Displaying top subs'
+    print 'In ' + subReddit + ' subreddit'
     
-    currentSubReddit = subReddit
- 
+    resetState(subReddit)    
+    
 def cd_dot_command():
     print 'cd . command'
 
@@ -20,8 +20,9 @@ def cd_dot_dot_command():
     print 'cd .. command'
 
 def ls_command():
+    global currentSubReddit
     print 'ls command'
-    redditGet.main_api_logic(currentSubReddit)
+    redditGet.main_api_logic(currentSubReddit, 0)
 
 def cat_command():
     print 'cat command'
@@ -29,5 +30,15 @@ def cat_command():
 # function to print line
 def print_line():
     print '--------------------------------------------------------------------------------------------------------\n'
+def next_command():
+    global nextNum
+    nextNum += 10
+    redditGet.main_api_logic(currentSubReddit, nextNum)
 
-
+def resetState(subReddit):
+    global currentSubReddit
+    global nextNum
+    global itemsArr
+    currentSubReddit = subReddit
+    nextNum = 0
+    itemsArr = []

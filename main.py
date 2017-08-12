@@ -12,14 +12,13 @@ import redditGet
 
 # bool to keep the program running
 programRunning = True
-
 ##################################################
 
 #####   NEED TO REFRACTOR FUNCTION IN FILES ######
 
 ##################################################
 # list of valid commands
-valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat', 'exit']
+valid_commands = ['ls', 'cd', 'cd .', 'cd ..', 'cat', 'exit', 'next']
 
 # Function to parse user inputs
 def input_parser(user_input):
@@ -52,6 +51,8 @@ def input_parser(user_input):
         elif (user_input == 'exit'):
             programRunning = False
 
+        elif (user_input == 'next'):
+            commandFuncs.next_command()
     else:
         print 'user entered invalid command'
 
