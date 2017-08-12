@@ -49,8 +49,6 @@ def main_api_logic(subReddit, subreddit_sort, nextNum):
 
 
 def storeItems(subreddit, subreddit_sort):
-
-
     all_submissions_pre = "subreddit." + subreddit_sort + "(limit=100)"
     all_submissions = eval(all_submissions_pre)
 
