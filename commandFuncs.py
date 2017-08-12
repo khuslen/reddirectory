@@ -21,6 +21,7 @@ def cd_command(subReddit):
     
     global currentSubReddit
     global current_subreddit_sort
+    global currentSubmission
 
     if len(subReddit) > 2:
 
@@ -34,6 +35,13 @@ def cd_command(subReddit):
             current_subreddit_sort = new_sort
         else:
             current_subreddit_sort = default_sort
+
+    elif (subReddit[1].isdigit()):
+        redditGet.readPost(int(subReddit[1]))
+        currentSubmission = int(subReddit[1])
+    elif (subReddit[1] == 'comments'):
+        redditGet.readComments(currentSubmission)
+
 
     else:
         current_subreddit_sort = default_sort
