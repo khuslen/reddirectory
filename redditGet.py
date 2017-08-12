@@ -17,15 +17,17 @@ import commandFuncs
 
 itemsArr = []
 
+# create an instance of reddit and subreddit using praw
+# Zak's credentials lolz
+reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
+                     client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
+                     user_agent='inter_webz')
+
 def main_api_logic(subReddit):
     # Stores the listed items in an array so we can access them with a number
     global itemsArr
     
-    # create an instance of reddit and subreddit using praw
-    # Zak's credentials lolz
-    reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
-                         client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
-                         user_agent='inter_webz')
+
     subreddit = reddit.subreddit(subReddit)
     
     itemNum = 1
@@ -35,7 +37,7 @@ def main_api_logic(subReddit):
         itemsArr.append(submission)
 
         print (str(itemNum) + '. Title: ')
-        print(submission.title)  # Submission title
+        print(submission.title[0:10])  # Submission title
         print ('Score: ')
         print (submission.score)  # Submission Score
         itemNum += 1
