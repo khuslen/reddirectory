@@ -1,4 +1,5 @@
-![alt text](https://raw.githubusercontent.com/khuslen/reddirectory/reddirectory.png)
+![img](https://github.com/khuslen/reddirectory/blob/master/reddirectory.png)
+
 ~ Terminal browser
 
 - go to reddit home page or a specified sub reddit
