@@ -38,10 +38,7 @@ def cd_command(user_input_split):
             print "hi"
 
     elif userSession.currentSession.currentState == 'attheverystartoftheprogram':
-        print "yo"
         userSession.currentSession.resetSession()
-        print "yoyo"
-        print userSession.currentSession.itemsArr
         userSession.currentSession.currentSubreddit = user_input_split[1]
         userSession.currentSession.currentState = 'thread'
     
