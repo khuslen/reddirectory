@@ -8,7 +8,7 @@ reddit = praw.Reddit(client_id='your_id',
                      client_secret='your_key',
                      user_agent='your_username',
                      username='your_username',
-                     password=your_password')
+                     password='your_password')
 ##################################################################
 
 def createSubReddit(currentSubreddit, title, body):
