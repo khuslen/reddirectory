@@ -8,8 +8,6 @@ import userSession
 import commandFuncs
 import formatOutput
 
-subId = []
-
 # create an instance of reddit and subreddit using praw
 # Zak's credentials lolz
 reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
@@ -20,9 +18,11 @@ def storeItems(subreddit, subreddit_sort):
     all_submissions_pre = "subreddit." + subreddit_sort + "(limit=100)"
     all_submissions = eval(all_submissions_pre)
 
+    userSession.currentSession.itemsArr = []
+
     for submission in all_submissions:
         userSession.currentSession.itemsArr.append(submission)
-        subId.append(submission.id)
+        userSession.currentSession.subId.append(submission.id)
 
 def main_api_logic(subReddit, subreddit_sort, nextNum):
     this_subreddit = reddit.subreddit(userSession.currentSession.currentSubreddit)
@@ -42,14 +42,14 @@ def main_api_logic(subReddit, subreddit_sort, nextNum):
 
 def readPost(itemNum):
     print formatOutput.displayTitle('Reading post: ', userSession.currentSession.itemsArr[itemNum-1].title)
-    submission = reddit.submission(subId[itemNum-1])
+    submission = reddit.submission(userSession.currentSession.subId[itemNum-1])
     formatOutput.printPost(submission)
 
 def readComments(itemNum):
     topComments = []
     usernames = []
     print formatOutput.displayTitle('Reading comments for: ', userSession.currentSession.itemsArr[itemNum-1].title)
-    submission = reddit.submission(subId[itemNum - 1])
+    submission = reddit.submission(userSession.currentSession.subId[itemNum - 1])
     for top_level_comment in submission.comments:
         if isinstance(top_level_comment, MoreComments):
             continue

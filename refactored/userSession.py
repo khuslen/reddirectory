@@ -7,6 +7,7 @@ class userSession:
         self.currentState = 'thread' # are we in a subreddit, submission or a comment?
         self.nextNum = 0
         self.itemsArr = []
+        self.subId = []
 
     def returnCurrentDirectory(self):
         string = self.currentSubreddit + "/"
@@ -19,19 +20,20 @@ class userSession:
         return string
 
     def resetSession(self):
-        self.currentSubreddit = 'popular'
         self.currentThread = 'hot'
         self.currentSubmission = ''
         self.currentComment = ''
         self.currentState = 'attheverystartoftheprogram' 
         self.nextNum = 0
         self.itemsArr = []
+        self.subId = []
 
     def resetThread(self):
         self.currentSubmission = ''
         self.currentComment = ''
-        self.currentState = 'thread' 
+        self.currentState = 'thread'
         self.nextNum = 0
         self.itemsArr = []
+        self.subId = []
 
 currentSession = userSession("popular") # Default subreddit is all
