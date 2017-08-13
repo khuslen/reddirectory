@@ -99,9 +99,25 @@ def next_command():
         redditGet.main_api_logic(userSession.currentSession.currentSubreddit, userSession.currentSession.currentThread,
                                  userSession.currentSession.nextNum)
 
+def previous_command():
+    if (userSession.currentSession.currentState == 'submission'):
+        userSession.currentSession.nextNumComment -= 10
+        if(userSession.currentSession.nextNumComment < 0):
+            userSession.currentSession.nextNumComment = 0
+        redditGet.readComments(userSession.currentSession.currentSubmission,
+                                       userSession.currentSession.nextNumComment)
+    elif (userSession.currentSession.currentState == 'thread'):
+        userSession.currentSession.nextNum -= 10
+        if(userSession.currentSession.nextNum < 0):
+            userSession.currentSession.nextNum = 0
+        redditGet.main_api_logic(userSession.currentSession.currentSubreddit,
+                                         userSession.currentSession.currentThread,
+                                         userSession.currentSession.nextNum)
 
 
-    # def next_command():
+
+
+                # def next_command():
 #
 #     userSession.currentSession.nextNum += 10
 #     redditGet.readComments(userSession.currentSession.currentSubmission, userSession.currentSession.nextNum)
