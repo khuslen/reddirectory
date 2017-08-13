@@ -7,7 +7,9 @@
 - use mkdir to post to a subreddit
 
 - using the PRAW reddit API wrapper https://praw.readthedocs.io/en/latest/index.html
-- Follow the steps here to create an app 
+
+
+Follow the steps here to create an app and get your user credentials
 - https://github.com/reddit/reddit/wiki/OAuth2-Quick-Start-Example#first-steps
 
 - replace the fields on the redditGet.py to be able to browse reddit

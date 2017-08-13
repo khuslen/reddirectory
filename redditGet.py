@@ -11,9 +11,9 @@ import formatOutput
 # create an instance of reddit and subreddit using praw
 
 #### EDIT DETAILS ################################################
-reddit = praw.Reddit(client_id='your_id',
-                     client_secret='your_key',
-                     user_agent='your_username')
+reddit = praw.Reddit(client_id='your_personal_use_script_id',
+                     client_secret='your_secret_key',
+                     user_agent='your_name_on_app')
 ##################################################################
 
 def storeItems(subreddit, subreddit_sort):
