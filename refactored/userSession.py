@@ -4,7 +4,7 @@ class userSession:
         self.currentThread = 'hot'
         self.currentSubmission = ''
         self.currentComment = ''
-        self.currentState = 'attheverystartoftheprogram' # are we in a subreddit, submission or a comment?
+        self.currentState = 'thread' # are we in a subreddit, submission or a comment?
         self.nextNum = 0
         self.itemsArr = []
 
@@ -19,7 +19,7 @@ class userSession:
         return string
 
     def resetSession(self):
-        self.currentSubreddit = 'all'
+        self.currentSubreddit = 'popular'
         self.currentThread = 'hot'
         self.currentSubmission = ''
         self.currentComment = ''
@@ -34,4 +34,4 @@ class userSession:
         self.nextNum = 0
         self.itemsArr = []
 
-currentSession = userSession("all") # Default subreddit is all
+currentSession = userSession("popular") # Default subreddit is all

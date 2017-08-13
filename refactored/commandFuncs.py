@@ -70,7 +70,6 @@ def cd_dot_dot_command():
 def ls_command():
     if userSession.currentSession.currentState == 'thread':
         redditGet.main_api_logic(userSession.currentSession.currentSubreddit, userSession.currentSession.currentThread, userSession.currentSession.nextNum)
-    
     elif userSession.currentSession.currentState == 'subreddit':
         printThreads()
     elif userSession.currentSession.currentState == 'submission':
