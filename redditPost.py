@@ -2,13 +2,14 @@
 import praw
 
 # create an instance of reddit and subreddit using praw
-# Zak's credentials lolz
-reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
-                     client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
-                     user_agent='inter_webz',
-                     username='inter_webz',
-                     password='password')
 
+#### EDIT DETAILS ################################################
+reddit = praw.Reddit(client_id='your_id',
+                     client_secret='your_key',
+                     user_agent='your_username',
+                     username='your_username',
+                     password=your_password')
+##################################################################
 
 def createSubReddit(currentSubreddit, title, body):
     print 'Create a submission in ' + currentSubreddit

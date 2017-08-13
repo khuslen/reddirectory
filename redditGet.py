@@ -9,10 +9,12 @@ import commandFuncs
 import formatOutput
 
 # create an instance of reddit and subreddit using praw
-# Zak's credentials lolz
-reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
-                     client_secret='wsjtyoqyNVKm0Ds8nTTGJNU-YIE',
-                     user_agent='inter_webz')
+
+#### EDIT DETAILS ################################################
+reddit = praw.Reddit(client_id='your_id',
+                     client_secret='your_key',
+                     user_agent='your_username')
+##################################################################
 
 def storeItems(subreddit, subreddit_sort):
     all_submissions_pre = "subreddit." + subreddit_sort + "(limit=100)"
