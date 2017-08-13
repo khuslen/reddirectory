@@ -13,7 +13,6 @@ def cd_command(user_input_split):
         cd_dot_dot_command()
     elif user_input_split[1].isdigit():
         if userSession.currentSession.currentState == 'subreddit':
-            #redditGet.readPost(int(user_input_split[1]))
             userSession.currentSession.currentThread = int(user_input_split[1])
             userSession.currentSession.currentState = 'thread'
         

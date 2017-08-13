@@ -1,6 +1,7 @@
 import json
 import praw
 from praw.models import MoreComments
+import pprint
 
 # Custom files
 import userSession
@@ -30,9 +31,14 @@ def main_api_logic(subReddit, subreddit_sort, nextNum):
         storeItems(this_subreddit, subreddit_sort)
 
     itemsData = []
+    usernames = []
     for item in userSession.currentSession.itemsArr:
         itemsData.append(item.title)
-    formatOutput.printList(itemsData, nextNum, ["37;40m", "35;40m"])
+        try:
+            usernames.append(item.author.name)
+        except AttributeError:
+            usernames.append("Deleted user")
+    formatOutput.printList(usernames, itemsData, nextNum, ["37;40m", "35;40m"])
 
 def readPost(itemNum):
     print formatOutput.displayTitle('Reading post: ', userSession.currentSession.itemsArr[itemNum-1].title)
@@ -41,12 +47,14 @@ def readPost(itemNum):
 
 def readComments(itemNum):
     topComments = []
+    usernames = []
     print formatOutput.displayTitle('Reading comments for: ', userSession.currentSession.itemsArr[itemNum-1].title)
     submission = reddit.submission(subId[itemNum - 1])
     for top_level_comment in submission.comments:
         if isinstance(top_level_comment, MoreComments):
             continue
         topComments.append(top_level_comment.body)
+        usernames.append(top_level_comment.author.name)
     
-    formatOutput.printList(topComments, 0, ["32;40m", "36;40m"])
+    formatOutput.printList(usernames, topComments, 0, ["32;40m", "36;40m"])
     
