@@ -7,10 +7,20 @@ default_sort = 'hot'
 valid_sorts = ['hot', 'new', 'rising', 'controversial', 'top']
 
 def cd_command(user_input_split):
+
+    print user_input_split
+
     if user_input_split[1] == '.':
         cd_dot_command()
+
     elif user_input_split[1] == '..':
         cd_dot_dot_command()
+
+    elif user_input_split[1][:3] == '../':
+        get_dots = user_input_split[1].split('/')
+        for x in range(0, len(get_dots)):
+            cd_dot_dot_command()
+
     elif user_input_split[1].isdigit():
         if userSession.currentSession.currentState == 'subreddit':
             #redditGet.readPost(int(user_input_split[1]))
