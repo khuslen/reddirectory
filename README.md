@@ -2,7 +2,9 @@
 
 ~ Terminal browser
 
-- go to reddit home page or a specified sub reddit
-- use cd, cd .., ls, cat etc to browse posts and read comments
-- Using the PRAW reddit API wrapper https://praw.readthedocs.io/en/latest/index.html
+- go to reddit home page or a specified subreddit
+- use cd, cd .., ls, next, prev, etc. to browse subreddits, submissions and read comments
+- use mkdir to post to a subreddit
+
+- using the PRAW reddit API wrapper https://praw.readthedocs.io/en/latest/index.html
 
