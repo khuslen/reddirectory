@@ -23,7 +23,7 @@ def printList(names, items, nextNum, colours):
     end = min(len(items), nextNum+10)
     for i in range(nextNum, end):
         # print color.YELLOW + str(i+1) + '. ' + color.BOLD + names[i] + ": " + color.END + CSI + colours[i%2] + items[i] + CSI + "0m"
-        print alernating_colours[i%2] + str(i+1) + '. ' + color.BOLD + items[i] + CSI + "0m" + " [" + names[i] + "]" + color.END
+        print CSI + colours[i%2] + str(i+1) + '. ' + color.BOLD + items[i] + CSI + "0m" + " [" + names[i] + "]" + color.END
 
 def printPost(submission):
     CSI="\x1B["
