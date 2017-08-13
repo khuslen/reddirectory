@@ -8,8 +8,6 @@ valid_sorts = ['hot', 'new', 'rising', 'controversial', 'top']
 
 def cd_command(user_input_split):
 
-    print user_input_split
-
     if user_input_split[1] == '.':
         cd_dot_command()
 
