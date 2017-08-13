@@ -43,9 +43,12 @@ def main_api_logic(subReddit, subreddit_sort, nextNum):
 def readPost(itemNum):
     print formatOutput.displayTitle('Reading post: ', userSession.currentSession.itemsArr[itemNum-1].title)
     submission = reddit.submission(subId[itemNum-1])
-    formatOutput.printPost(submission)
+    if (submission.url):
+        print submission.url
+    else:
+        formatOutput.printPost(submission)
 
-def readComments(itemNum):
+def readComments(itemNum, nextNum):
     topComments = []
     usernames = []
     print formatOutput.displayTitle('Reading comments for: ', userSession.currentSession.itemsArr[itemNum-1].title)
@@ -59,5 +62,5 @@ def readComments(itemNum):
             usernames.append("Deleted user")
         topComments.append(top_level_comment.body)
 
-    formatOutput.printList(usernames, topComments, 0, ["32;40m", "36;40m"])
+    formatOutput.printList(usernames, topComments, nextNum, ["32;40m", "36;40m"])
     

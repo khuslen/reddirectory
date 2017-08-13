@@ -28,6 +28,7 @@ def cd_command(user_input_split):
             userSession.currentSession.currentSubmission = int(user_input_split[1])
             userSession.currentSession.currentState = 'submission'
             redditGet.readPost(int(user_input_split[1]))
+            userSession.currentSession.nextNumComment = 0
 
         elif userSession.currentSession.currentState == 'submission':
             userSession.currentSession.currentComment = int(user_input_split[1])
@@ -73,7 +74,7 @@ def ls_command():
     elif userSession.currentSession.currentState == 'subreddit':
         printThreads()
     elif userSession.currentSession.currentState == 'submission':
-        redditGet.readComments(userSession.currentSession.currentSubmission)
+        redditGet.readComments(userSession.currentSession.currentSubmission, userSession.currentSession.nextNum)
     elif userSession.currentSession.currentState == 'comment':
         # TODO: Display subcomments
         print "hi 2"
@@ -87,8 +88,27 @@ def cat_command():
     print 'cat command'
 
 def next_command():
-    userSession.currentSession.nextNum += 10
-    redditGet.main_api_logic(userSession.currentSession.currentSubreddit, userSession.currentSession.currentThread, userSession.currentSession.nextNum)
+    if(userSession.currentSession.currentState == 'submission'):
+        userSession.currentSession.nextNumComment += 10
+        redditGet.readComments(userSession.currentSession.currentSubmission, userSession.currentSession.nextNumComment)
+    else:
+        userSession.currentSession.nextNum += 10
+        redditGet.main_api_logic(userSession.currentSession.currentSubreddit, userSession.currentSession.currentThread,
+                                 userSession.currentSession.nextNum)
+
+
+
+    # def next_command():
+#
+#     userSession.currentSession.nextNum += 10
+#     redditGet.readComments(userSession.currentSession.currentSubmission, userSession.currentSession.nextNum)
+
+    # if  (userSession.currentSession.currentState == 'submission'):
+    #     userSession.currentSession.nextNum += 10
+    #     redditGet.main_api_logic(userSession.currentSession.currentSubreddit, userSession.currentSession.currentThread, userSession.currentSession.nextNum)
+    # elif (userSession.currentSession.currentState == 'subreddit'):
+    #     userSession.currentSession.nextNum += 10
+    #     redditGet.readComments(userSession.currentSession.currentSubmission, userSession.currentSession.nextNum)
 
 def mkdir_command(title, body):
     redditPost.createSubReddit(userSession.currentSession.currentSubreddit, title, body)
