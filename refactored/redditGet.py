@@ -51,10 +51,10 @@ def readPost(itemNum):
 # =======
 
     submission = reddit.submission(userSession.currentSession.subId[itemNum-1])
-    if (submission.url):
-        print submission.url
-    else:
+    if (submission.selftext):
         formatOutput.printPost(submission)
+    else:
+        print submission.url
 
     # formatOutput.printPost(submission)
 # >>>>>>> 0cec61483b3ca682423d9af593fd2dac91d05be1
