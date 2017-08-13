@@ -34,4 +34,4 @@ def input_parser(user_input):
             body = titleAndBody[1].replace("'", '')
             commandFuncs.mkdir_command(title, body)
     else:
-        print 'user entered invalid command'
+        print 'Please enter a invalid command (enter \"help\" for assistance)'

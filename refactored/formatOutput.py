@@ -14,3 +14,8 @@ def printPost(submission):
     CSI="\x1B["
     reset=CSI+"m"
     print CSI + "33;40m" + submission.selftext + CSI + "0m"
+
+def displayTitle(prefix, title):
+    CSI="\x1B["
+    reset=CSI+"m"
+    return CSI + "35;40m" + prefix + title + CSI + "0m"

@@ -1,26 +1,12 @@
 class userSession:
     def __init__(self, subreddit):
-        self.currentSubreddit = 'all'
+        self.currentSubreddit = subreddit
         self.currentThread = 'hot'
         self.currentSubmission = ''
         self.currentComment = ''
-        self.directories = []
         self.currentState = 'attheverystartoftheprogram' # are we in a subreddit, submission or a comment?
         self.nextNum = 0
         self.itemsArr = []
-        self.layer = 1
-        
-    def changeThread(self):
-        print "thread"
-
-    def changeSubreddit(self):
-        print "subreddit"
-
-    def changeSubmission(self):
-        print "submission"
-
-    def changeComment(self):
-        print "comment"
 
     def returnCurrentDirectory(self):
         string = self.currentSubreddit + "/"
@@ -37,10 +23,15 @@ class userSession:
         self.currentThread = 'hot'
         self.currentSubmission = ''
         self.currentComment = ''
-        self.directories = []
         self.currentState = 'attheverystartoftheprogram' 
         self.nextNum = 0
         self.itemsArr = []
-        self.layer = 1
+
+    def resetThread(self):
+        self.currentSubmission = ''
+        self.currentComment = ''
+        self.currentState = 'thread' 
+        self.nextNum = 0
+        self.itemsArr = []
 
 currentSession = userSession("all") # Default subreddit is all

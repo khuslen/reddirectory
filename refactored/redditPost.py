@@ -11,11 +11,11 @@ reddit = praw.Reddit(client_id='ilgRMpq1J-Kx4w',
 
 
 def createSubReddit(currentSubreddit, title, body):
-    print 'create a sumission in ' + currentSubreddit
+    print 'Create a submission in ' + currentSubreddit
     print 'Title' + title
     print 'Body'  + body
-    print 'creating a submission ....'
+    print 'Creating a submission ....'
 
     # title = 'Test submission from app'
     reddit.subreddit(currentSubreddit).submit(title, selftext= body)
-    print 'submission successfull'
+    print 'Submission successful!'

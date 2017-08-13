@@ -1,7 +1,4 @@
 import json
-#import urllib2
-#import httplib
-#import time
 import praw
 from praw.models import MoreComments
 
@@ -22,7 +19,6 @@ def storeItems(subreddit, subreddit_sort):
     all_submissions_pre = "subreddit." + subreddit_sort + "(limit=100)"
     all_submissions = eval(all_submissions_pre)
 
-    # for submission in subreddit.top(limit=100):
     for submission in all_submissions:
         userSession.currentSession.itemsArr.append(submission)
         subId.append(submission.id)
@@ -39,14 +35,13 @@ def main_api_logic(subReddit, subreddit_sort, nextNum):
     formatOutput.printList(itemsData, nextNum, ["37;40m", "35;40m"])
 
 def readPost(itemNum):
-    print 'reading post'
-    print itemNum
-    submission = reddit.submission(subId[itemNum -1])
+    print formatOutput.displayTitle('Reading post: ', userSession.currentSession.itemsArr[itemNum-1].title)
+    submission = reddit.submission(subId[itemNum-1])
     formatOutput.printPost(submission)
 
 def readComments(itemNum):
     topComments = []
-    print 'read comments'
+    print formatOutput.displayTitle('Reading comments for: ', userSession.currentSession.itemsArr[itemNum-1].title)
     submission = reddit.submission(subId[itemNum - 1])
     for top_level_comment in submission.comments:
         if isinstance(top_level_comment, MoreComments):

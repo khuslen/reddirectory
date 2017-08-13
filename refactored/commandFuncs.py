@@ -13,13 +13,14 @@ def cd_command(user_input_split):
         cd_dot_dot_command()
     elif user_input_split[1].isdigit():
         if userSession.currentSession.currentState == 'subreddit':
-            redditGet.readPost(int(user_input_split[1]))
+            #redditGet.readPost(int(user_input_split[1]))
             userSession.currentSession.currentThread = int(user_input_split[1])
             userSession.currentSession.currentState = 'thread'
         
         elif userSession.currentSession.currentState == 'thread':
             userSession.currentSession.currentSubmission = int(user_input_split[1])
             userSession.currentSession.currentState = 'submission'
+            redditGet.readPost(int(user_input_split[1]))
 
         elif userSession.currentSession.currentState == 'submission':
             userSession.currentSession.currentComment = int(user_input_split[1])
@@ -39,6 +40,7 @@ def cd_command(user_input_split):
         userSession.currentSession.currentThread = 'hot'
         if user_input_split[1] in valid_sorts:
             userSession.currentSession.currentThread = user_input_split[1]
+        userSession.currentSession.resetThread()
 
 def cd_dot_command():
     print 'cd . command'
@@ -61,6 +63,7 @@ def cd_dot_dot_command():
 def ls_command():
     if userSession.currentSession.currentState == 'thread':
         redditGet.main_api_logic(userSession.currentSession.currentSubreddit, userSession.currentSession.currentThread, userSession.currentSession.nextNum)
+    
     elif userSession.currentSession.currentState == 'subreddit':
         printThreads()
     elif userSession.currentSession.currentState == 'submission':
