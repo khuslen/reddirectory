@@ -53,8 +53,11 @@ def readComments(itemNum):
     for top_level_comment in submission.comments:
         if isinstance(top_level_comment, MoreComments):
             continue
+        try:
+            usernames.append(top_level_comment.author.name)
+        except AttributeError:
+            usernames.append("Deleted user")
         topComments.append(top_level_comment.body)
-        usernames.append(top_level_comment.author.name)
-    
+
     formatOutput.printList(usernames, topComments, 0, ["32;40m", "36;40m"])
     
